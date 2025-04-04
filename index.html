@@ -12,8 +12,23 @@
     <h1>FarmSwap</h1>
     <p>A farming community for trading sires to preventing inbreeding in livestock</p>
    </div>
+   <div class="container-fluid">
+    <div class="row" id="critter-grid">
+        <div class="col-sm-3">
+
+        </div>
+    </div>
+   </div>
 </body>
 <script>
-
+const data = [{"Name":"Bob","Species":"Chicken","Breed":"barred rock"},{"Name":"Bob","Species":"Chicken","Breed":"barred rock"}];
+const jsonArray = JSON.parse(data);
+let critterGrid = document.getElementById('critter-grid');
+jsonArray.forEach(item => {
+  // Access properties of each item using dot notation or bracket notation
+  //console.log("Name:", item.name);
+  //console.log("Age:", item.age);
+    
+});
 </script>
 </html>
