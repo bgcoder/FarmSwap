@@ -48,7 +48,7 @@ const data =
 let critterGrid = document.getElementById('critter-grid');
 for(var i = 0; i < 9; i++){
   let block = document.createElement('div');
-  block.id = 'aminamal_' + data.id;
+  block.id = 'animal_' + data.id;
   block.classList.add('block');
   block.classList.add('col-sm-2');
   var pic = document.createElement('img');
@@ -57,7 +57,7 @@ for(var i = 0; i < 9; i++){
   var textbox = document.createElement('div');
   textbox.classList.add('critterText');
   textbox.innerHTML = '<b>Name: </b>'+ data.Name+'<br/><b>Species: </b>'+data.Species+"<br/><b>Breed: </b>"+data.Breed;
-  pic.src = "/images/Bob.jpg";
+  pic.src = "./images/Bob.jpg";
   pic.height = 75;
   pic.width = 75;
   frame.appendChild(pic);
