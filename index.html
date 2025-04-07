@@ -63,17 +63,43 @@
     </body>
     <script>
         const data =   
-            {
-                'id':0,
-                'Name':'Bob',
-                'Species':'Chicken',
-                'Breed':'barred rock'
-            };
-        //const jsonArray = JSON.parse(data);
+        {   "animals":
+            [
+                {
+                    "id":0,
+                    "name":"Bob",
+                    "species":"chicken",
+                    "sex":"male",
+                    "breed":"barred rock",
+                    "age":12,
+                    "photo":"./images/barredRooster.jpg"
+                },
+                {
+                    "id":1,
+                    "name":"Henrietta",
+                    "species":"chicken",
+                    "sex":"female",
+                    "breed":"barred rock",
+                    "age":10,
+                    "photo":"./images/Bob.jpg"
+                },
+                {
+                    "id":2,
+                    "name":"Hank",
+                    "species":"chicken",
+                    "sex":"male",
+                    "breed":"red",
+                    "age":5,
+                    "photo":"./images/red.jpg"
+                }
+            ]
+        };
+        
         let critterGrid = document.getElementById('critter-grid');
-        for(var i = 0; i < 9; i++){
+        for(var i = 0; i < data['animals'].length; i++){
             let block = document.createElement('div');
-            block.id = 'animal_' + data.id;
+            
+            block.id = 'animal_' + data['animals'][i].id;
             block.classList.add('block');
             block.classList.add('col-sm-2');
             var pic = document.createElement('img');
@@ -81,12 +107,12 @@
             frame.classList.add('critterPic');
             var textbox = document.createElement('div');
             textbox.classList.add('critterText');
-            textbox.innerHTML = '<b>Name: </b>'+ data.Name+'<br/><b>Species: </b>'+data.Species+"<br/><b>Breed: </b>"+data.Breed;
-            pic.src = "./images/Bob.jpg";
+            textbox.innerHTML = '<b>Name: </b>'+ data['animals'][i].name+'<br/><b>Species: </b>'+data['animals'][i].species+
+            "<br/><b>Breed: </b>"+data['animals'][i].breed+"<br/><b>Months: </b>"+data['animals'][i].age;
+            pic.src = data['animals'][i].photo;
             pic.height = 75;
             pic.width = 75;
             frame.appendChild(pic);
-
             block.appendChild(frame);
             block.appendChild(textbox);
             critterGrid.appendChild(block);
@@ -96,7 +122,9 @@
             if (e.which == 13) {
             // Code to execute when Enter key is pressed
                 alert("enter key pressed");
-                // Place your desired action here, such as submitting a form or triggering a function.
+                
+            }else{
+                //do predictive text
             }
         });
     </script>
