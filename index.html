@@ -62,61 +62,43 @@
         </div>
     </body>
     <script>
-        const data =   
-        {   "animals":
-            [
-                {
-                    "id":0,
-                    "name":"Bob",
-                    "species":"chicken",
-                    "sex":"male",
-                    "breed":"barred rock",
-                    "age":12,
-                    "photo":"./images/barredRooster.jpg"
-                },
-                {
-                    "id":1,
-                    "name":"Henrietta",
-                    "species":"chicken",
-                    "sex":"female",
-                    "breed":"barred rock",
-                    "age":10,
-                    "photo":"./images/Bob.jpg"
-                },
-                {
-                    "id":2,
-                    "name":"Hank",
-                    "species":"chicken",
-                    "sex":"male",
-                    "breed":"red",
-                    "age":5,
-                    "photo":"./images/red.jpg"
-                }
-            ]
-        };
         
-        let critterGrid = document.getElementById('critter-grid');
-        for(var i = 0; i < data['animals'].length; i++){
-            let block = document.createElement('div');
-            
-            block.id = 'animal_' + data['animals'][i].id;
-            block.classList.add('block');
-            block.classList.add('col-sm-2');
-            var pic = document.createElement('img');
-            var frame = document.createElement('div');
-            frame.classList.add('critterPic');
-            var textbox = document.createElement('div');
-            textbox.classList.add('critterText');
-            textbox.innerHTML = '<b>Name: </b>'+ data['animals'][i].name+'<br/><b>Species: </b>'+data['animals'][i].species+
-            "<br/><b>Breed: </b>"+data['animals'][i].breed+"<br/><b>Months: </b>"+data['animals'][i].age;
-            pic.src = data['animals'][i].photo;
-            pic.height = 75;
-            pic.width = 75;
-            frame.appendChild(pic);
-            block.appendChild(frame);
-            block.appendChild(textbox);
-            critterGrid.appendChild(block);
-        }
+        $.getJSON('http://campcrew.pcriot.com/playground/getAnimals.php', function(myData) {
+            let data = JSON.parse(myData);
+            let critterGrid = document.getElementById('critter-grid');
+            for(var i = 0; i < data['animals'].length; i++){
+                let block = document.createElement('div');
+                
+                block.id = 'animal_' + data['animals'][i].id;
+                block.classList.add('block');
+                block.classList.add('col-sm-2');
+                var pic = document.createElement('img');
+                var frame = document.createElement('div');
+                frame.classList.add('critterPic');
+                var textbox = document.createElement('div');
+                textbox.classList.add('critterText');
+                textbox.innerHTML = '<b>Name: </b>'+ data['animals'][i].name+'<br/><b>Species: </b>'+data['animals'][i].species+
+                "<br/><b>Breed: </b>"+data['animals'][i].breed+"<br/><b>Months: </b>"+data['animals'][i].age;
+                pic.src = data['animals'][i].photo;
+                pic.height = 75;
+                pic.width = 75;
+                frame.appendChild(pic);
+                block.appendChild(frame);
+                block.appendChild(textbox);
+                critterGrid.appendChild(block);
+            }
+        })
+        .done(function() {
+            console.log( "Request finished successfully" );
+        })
+        .fail(function(error) {
+            console.error( "Request failed:", error );
+        })
+        .always(function() {
+            console.log( "Request completed" );
+        });
+        
+        
 
         $("#searchBar").on('keypress', function(e) {
             if (e.which == 13) {
