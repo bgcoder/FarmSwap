@@ -55,10 +55,22 @@
             </div>
         </div>
         <div class="container-fluid">
-            <p>A farming community for trading sires to preventing inbreeding in livestock</p>
+            <p>A farming community for trading sires to preventing inbreeding in livestock.</p>
         </div>
         <div class="container-fluid">
             <div class="row" id="critter-grid"></div>
+        </div>
+        <div class="row" id="createCritter">
+            <form id="createCritter">
+                <label for="name">Animal Name:</label>
+                <input type="text" id="name" name="name">
+                <label for="species">Species:</label>
+                <input type="text" id="species" name="species">
+                <label for="breed">Breed:</label>
+                <input type="text" id="breed" name="breed">
+
+                
+            </form>
         </div>
     </body>
     <script>
@@ -80,8 +92,8 @@
                 textbox.innerHTML = '<b>Name: </b>'+ data['animals'][i].name+'<br/><b>Species: </b>'+data['animals'][i].species+
                 "<br/><b>Breed: </b>"+data['animals'][i].breed+"<br/><b>Months: </b>"+data['animals'][i].age;
                 pic.src = data['animals'][i].photo;
-                pic.height = 75;
-                pic.width = 75;
+                pic.height = 60;
+                pic.width = 60;
                 frame.appendChild(pic);
                 block.appendChild(frame);
                 block.appendChild(textbox);
