@@ -30,6 +30,13 @@
                 border-radius: 33px;
                 border-color: #333;
             }
+            #createCritterDiv{
+                background-color: #ddd;
+                padding:10px;
+                box-shadow: 5px 5px 5px 5px #aaa;
+                border-radius: 15px;
+            }
+
         </style>
         <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -60,17 +67,45 @@
         <div class="container-fluid">
             <div class="row" id="critter-grid"></div>
         </div>
-        <div class="row" id="createCritter">
-            <form id="createCritter">
-                <label for="name">Animal Name:</label>
-                <input type="text" id="name" name="name">
-                <label for="species">Species:</label>
-                <input type="text" id="species" name="species">
-                <label for="breed">Breed:</label>
-                <input type="text" id="breed" name="breed">
-
-                
-            </form>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6" id="createCritterDiv">
+                <form id="createCritterForm">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="name">Animal Name:</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" id="name" name="name"><br/>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="species">Species:</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" id="species" name="species">
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="breed">Breed:</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" id="breed" name="breed"><br/>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    <label for="age">Age in months:</label>
+                    <input type="number" name="age" id="age">
+                    <label for="photo">Photo</label>
+                    <input type="file" name="photo" id="photo">
+                </form>
+            </div>
+            <div class="col-sm-3"></div>
         </div>
     </body>
     <script>
