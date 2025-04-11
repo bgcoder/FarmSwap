@@ -76,7 +76,7 @@
                             <label for="name">Animal Name:</label>
                         </div>
                         <div class="col-sm-6">
-                            <input type="hidden" name="animal" id="animal">
+                            <input type="hidden" name="animal" id="animal" value="animal">
                             <input type="text" id="name" name="name"><br/>
                         </div>
                     </div>
@@ -106,27 +106,30 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <label for="male">Male</label>
+                            <label for="male">Sex</label>
                         </div>
                         <div class="col-sm-6">
-                            <input type="radio" name="sex" id="male" value="male">
+                            Male:<input type="radio" name="sex" id="male" value="male">
+                            Female:<input type="radio" name="sex" id="female" value="female">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <label for="male">Female</label>
+                            <label for="photo">Photo</label>
                         </div>
                         <div class="col-sm-6">
-                            <input type="radio" name="sex" id="female" value="female">
+                            <!--<input type="file" name="photo" id="photo" accept="image/*">-->
+                            <input type="text" name="photo" id="photo">
                         </div>
                     </div>
-                    
-                    
-                    
-                    
-                    
-                    <label for="photo">Photo</label>
-                    <input type="file" name="photo" id="photo">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="addCritterSubmit">Submit</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button id="addCritterCancel">Cancel</button>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="col-sm-3"></div>
@@ -179,6 +182,28 @@
             }else{
                 //do predictive text
             }
+        });
+
+        $("#addCritterSubmit").click(function(){
+            let name = $('#name').val();
+            let species = $('#species').val();
+            let breed = $('#breed').val();
+            let age = $('#age').val();
+            let sex = $('input[name=sex]:checked','#createCritterForm').val();
+            let photo = $('#photo').val();
+            
+            $.post("http://campcrew.pcriot.com/playground/createAnimal.php",
+            {
+                name: name,
+                species: species,
+                breed: breed,
+                age: age,
+                sex: sex,
+                photo: photo
+            },function(data, status){
+                alert("Data: " + data + "\n Status: " + status);
+            });
+            
         });
     </script>
 </html>
