@@ -70,7 +70,7 @@
         <div class="row">
             <div class="col-sm-3"></div>
             <div class="col-sm-6" id="createCritterDiv">
-                <form id="createCritterForm">
+                <form id="createCritterForm" method="POST">
                     <div class="row">
                         <div class="col-sm-6">
                             <label for="name">Animal Name:</label>
@@ -203,7 +203,25 @@
             },function(data, status){
                 alert("Data: " + data + "\n Status: " + status);
             });
-            
+            /*
+            $.ajax({
+                url: 'http://campcrew.pcriot.com/playground/createAnimal.php',
+                type: 'PUT',
+                data: { 
+                    key: 'value' 
+                },
+                success: function(response) {
+                    // Handle successful update
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                // Handle errors
+                    console.error(xhr.responseText);
+                }
+            });
+            */
         });
+
+        
     </script>
 </html>
