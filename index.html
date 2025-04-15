@@ -70,7 +70,7 @@
         <div class="row">
             <div class="col-sm-3"></div>
             <div class="col-sm-6" id="createCritterDiv">
-                <form id="createCritterForm" method="POST">
+                <form id="createCritterForm" method="POST" enctype="multipart/form-data" action="http://campcrew.pcriot.com/playground/createAnimal.php">
                     <div class="row">
                         <div class="col-sm-6">
                             <label for="name">Animal Name:</label>
@@ -191,24 +191,16 @@
             let age = $('#age').val();
             let sex = $('input[name=sex]:checked','#createCritterForm').val();
             let photo = $('#photo').val();
-            
-            $.post("http://campcrew.pcriot.com/playground/createAnimal.php",
-            {
-                name: name,
-                species: species,
-                breed: breed,
-                age: age,
-                sex: sex,
-                photo: photo
-            },function(data, status){
-                alert("Data: " + data + "\n Status: " + status);
-            });
-            /*
+            alert(photo);
             $.ajax({
-                url: 'http://campcrew.pcriot.com/playground/createAnimal.php',
-                type: 'PUT',
-                data: { 
-                    key: 'value' 
+                url: "http://campcrew.pcriot.com/playground/createAnimal.php",
+                data:{
+                    name: name,
+                    species: species,
+                    breed: breed,
+                    age: age,
+                    sex: sex,
+                    photo: photo
                 },
                 success: function(response) {
                     // Handle successful update
@@ -219,7 +211,6 @@
                     console.error(xhr.responseText);
                 }
             });
-            */
         });
 
         
