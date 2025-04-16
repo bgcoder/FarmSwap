@@ -137,8 +137,7 @@
     </body>
     <script>
         
-        $.getJSON('http://campcrew.pcriot.com/playground/getAnimals.php', function(myData) {
-            let data = JSON.parse(myData);
+        function formatData(data){
             let critterGrid = document.getElementById('critter-grid');
             for(var i = 0; i < data['animals'].length; i++){
                 let block = document.createElement('div');
@@ -161,6 +160,32 @@
                 block.appendChild(textbox);
                 critterGrid.appendChild(block);
             }
+        }
+
+        function getSearch(search = null){
+            alert("searching");
+            $.get('http://campcrew.pcriot.com/playground/getAnimals.php', 
+                {
+                    search: search
+                }, 
+                function(data, status) {
+                    if (status === "success") {
+                        // Process the data received from the server
+                        console.log(data);
+                        formatData(data);
+                    } else {
+                        // Handle errors
+                        console.error("Error: " + status);
+                    }
+                }, 
+                "json"
+            );
+        }
+
+        $.getJSON('http://campcrew.pcriot.com/playground/getAnimals.php', 
+            function(myData) {
+            let data = JSON.parse(myData);
+            formatData(data);
         })
         .done(function() {
             console.log( "Request finished successfully" );
@@ -177,8 +202,8 @@
         $("#searchBar").on('keypress', function(e) {
             if (e.which == 13) {
             // Code to execute when Enter key is pressed
-                alert("enter key pressed");
-                
+                let search = $('#searchBar').val();
+                getSearch(search);
             }else{
                 //do predictive text
             }
