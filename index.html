@@ -10,7 +10,7 @@
                 margin: 5px;
                 padding: 5px;
                 width: 50px;
-                height: 100px;
+                height: 150px;
             }
             .critterPic{
                 float:left;
@@ -152,7 +152,7 @@
                 var textbox = document.createElement('div');
                 textbox.classList.add('critterText');
                 textbox.innerHTML = '<b>Name: </b>'+ data['animals'][i].name+'<br/><b>Species: </b>'+data['animals'][i].species+
-                "<br/><b>Breed: </b>"+data['animals'][i].breed+"<br/><b>Months: </b>"+data['animals'][i].age;
+                "<br/><b>Breed: </b>"+data['animals'][i].breed+"<br/><b>Sex:</b> "  + data['animals'][i].sex + "<br/><b>Months: </b>"+data['animals'][i].age;
                 pic.src = data['animals'][i].photo;
                 pic.height = 60;
                 pic.width = 60;
