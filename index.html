@@ -136,8 +136,9 @@
         </div>
     </body>
     <script>
-        
+        let search = null;
         function formatData(data){
+            data = JSON.parse(data);
             let critterGrid = document.getElementById('critter-grid');
             for(var i = 0; i < data['animals'].length; i++){
                 let block = document.createElement('div');
@@ -162,8 +163,9 @@
             }
         }
 
-        function getSearch(search = null){
-            alert("searching");
+        function getSearch(search){
+            //alert("searching");
+            clearGrid();
             $.get('http://campcrew.pcriot.com/playground/getAnimals.php', 
                 {
                     search: search
@@ -182,22 +184,12 @@
             );
         }
 
-        $.getJSON('http://campcrew.pcriot.com/playground/getAnimals.php', 
-            function(myData) {
-            let data = JSON.parse(myData);
-            formatData(data);
-        })
-        .done(function() {
-            console.log( "Request finished successfully" );
-        })
-        .fail(function(error) {
-            console.error( "Request failed:", error );
-        })
-        .always(function() {
-            console.log( "Request completed" );
-        });
+        function clearGrid(){
+            let critterGrid = document.getElementById('critter-grid');
+            critterGrid.innerHTML = '';
+        }
         
-        
+        getSearch();
 
         $("#searchBar").on('keypress', function(e) {
             if (e.which == 13) {
