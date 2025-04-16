@@ -137,12 +137,12 @@
     </body>
     <script>
         let search = null;
+
         function formatData(data){
             data = JSON.parse(data);
             let critterGrid = document.getElementById('critter-grid');
             for(var i = 0; i < data['animals'].length; i++){
                 let block = document.createElement('div');
-                
                 block.id = 'animal_' + data['animals'][i].id;
                 block.classList.add('block');
                 block.classList.add('col-sm-2');
@@ -208,7 +208,6 @@
             let age = $('#age').val();
             let sex = $('input[name=sex]:checked','#createCritterForm').val();
             let photo = $('#photo').val();
-            alert(photo);
             $.ajax({
                 url: "http://campcrew.pcriot.com/playground/createAnimal.php",
                 data:{
@@ -230,6 +229,10 @@
             });
         });
 
+        
+        $(document).on('click','.block', function(){
+            alert("cicked " + this.id);
+        });
         
     </script>
 </html>
