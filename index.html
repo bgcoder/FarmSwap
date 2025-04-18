@@ -70,7 +70,7 @@
         <div class="row">
             <div class="col-sm-3"></div>
             <div class="col-sm-6" id="createCritterDiv">
-                <form id="createCritterForm" method="POST" enctype="multipart/form-data">
+                <form id="createCritterForm" method="POST" enctype="multipart/form-data" action="http://campcrew.pcriot.com/playground/createAnimal.php">
                     <div class="row">
                         <div class="col-sm-6">
                             <label for="name">Animal Name:</label>
@@ -208,7 +208,9 @@
             let age = $('#age').val();
             let sex = $('input[name=sex]:checked','#createCritterForm').val();
             let photo = $('#photo').val();
+            //event.preventDefault();
             $.ajax({
+                async: true,
                 type: "POST",
                 url: "http://campcrew.pcriot.com/playground/createAnimal.php",
                 data:{
