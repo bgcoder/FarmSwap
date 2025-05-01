@@ -173,6 +173,27 @@
                 function(data, status) {
                     if (status === "success") {
                         // Process the data received from the server
+                        //console.log(data);
+                        formatData(data);
+                    } else {
+                        // Handle errors
+                        console.error("Error: " + status);
+                    }
+                }, 
+                "json"
+            );
+        }
+
+        function getAnimal(id){
+            clearGrid();
+            console.log(id);
+            $.get('http://campcrew.pcriot.com/playground/getAnimals.php', 
+                {
+                    id: id
+                }, 
+                function(data, status) {
+                    if (status === "success") {
+                        // Process the data received from the server
                         console.log(data);
                         formatData(data);
                     } else {
@@ -234,7 +255,9 @@
 
         
         $(document).on('click','.block', function(){
-            alert("cicked " + this.id);
+            //alert("cicked " + this.id);
+            let id = this.id.split('_')[1];
+            getAnimal(id);
         });
         
     </script>
